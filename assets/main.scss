@@ -1,0 +1,24 @@
+//Sass Variables for Colors. 
+
+
+$colors: (
+    primary: #000DFF,
+    secondary: #000DFD,
+    accent: #FF00FF,
+);
+
+// necessary for full background
+body, html {
+    height: 100%;
+};
+// map-get calls property of color
+body {
+    margin: 0;
+    background-color: map-get($colors, accent);
+    
+};
+
+h1 {
+    color: map-get($colors, primary);
+};
+
