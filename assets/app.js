@@ -12,6 +12,8 @@ var config = {
   
   // Create a variable to reference the database.
   var database = firebase.database();
+// $(document).on("click", "button", function() {
+
 
 $.ajax({
     url: "https://developers.zomato.com/api/v2.1/cities?q=austin",
@@ -25,7 +27,7 @@ $.ajax({
     
 
   });
-
+// });
 // this may be helpful for adding the map
   // https://developers.google.com/maps/documentation/javascript/adding-a-google-map
   // function initMap() {
