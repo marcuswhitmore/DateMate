@@ -15,10 +15,15 @@ body, html {
 body {
     margin: 0;
     background-color: map-get($colors, accent);
-    
+    text-align: center;
 };
 
 h1 {
     color: map-get($colors, primary);
+};
+
+#map {
+    height: 400px;
+    width: 50%;
 };
 

@@ -4,11 +4,16 @@ body, html {
 
 body {
   margin: 0;
-  background-color: rgb(158, 84, 158);
+  background-color: #FF00FF;
+  text-align: center;
 }
 
 h1 {
   color: #000DFF;
 }
 
+#map {
+  height: 400px;
+  width: 50%;
+}
 /*# sourceMappingURL=main.css.map */
