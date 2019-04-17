@@ -45,3 +45,21 @@ $.ajax({
 
   // google maps javascript api key
   // AIzaSyCHk5Xc_Ch01g0I6Bhn6R5bj0TMpYhHGRI
+
+// Map displaying on DOM
+var gApiKey = "AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE";
+var map;
+function initMap() {
+  var options = {
+    zoom:8,
+    center:{lat:30.2672,lng:-97.7431}
+  }
+
+  var map = new 
+  google.maps.Map(document.getElementById('map'), options);
+
+  var marker = new google.maps.Marker({
+    position:{lat:30.2672,lng:-97.7431},
+    map:map
+  })
+}
