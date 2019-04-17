@@ -37,3 +37,9 @@ $.ajax({
   //   // The marker, positioned at Uluru
   //   var marker = new google.maps.Marker({position: uluru, map: map});
   // }
+
+  // google maps embeded api key
+  // AIzaSyCHk5Xc_Ch01g0I6Bhn6R5bj0TMpYhHGRI 
+
+  // google maps javascript api key
+  // AIzaSyCHk5Xc_Ch01g0I6Bhn6R5bj0TMpYhHGRI
