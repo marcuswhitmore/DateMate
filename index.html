@@ -3,10 +3,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rock Paper Scissors</title>
+    <title>Group Project</title>
     <link href="https://fonts.googleapis.com/css?family=Asap:400,500,700" rel="stylesheet">
+    <!-- Sass & Style -->
     <link rel="stylesheet" href="assets/main.css">
+    <!-- FireBase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Jquery -->
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
 
 
 <head>
@@ -32,7 +40,10 @@
     <div>
         Search your City for a Great Place to eat and a bar close by.
         <p>
-        <input type="text" placeholder="Insert City">
+        <input id="theCity" type="text" placeholder="Insert City">
+        <input id="theState" type="text" placeholder="Insert State">
+        <button id="submit">Submit</button>
+
         </p>
     </div>
     <div id="map"></div>
@@ -44,8 +55,12 @@
     <div>
         <span>insert bar</span>
     </div>
+    <h1>My google Map</h1>
+    <div id="Map"></div>
 
-
+    <!-- Google Maps Cdn -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE&callback=initMap"
+    async defer></script>
     <script src="assets/app.js"></script>
 </body>
 </html>
