@@ -1,15 +1,11 @@
-body, html {
-  height: 100%;
-}
-
 body {
   margin: 0;
-  background-color: #FF00FF;
+  background-color: #0e3972;
   text-align: center;
 }
 
 h1 {
-  color: #000DFF;
+  color: #ff0a8d;
 }
 
 #map {

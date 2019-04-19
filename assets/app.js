@@ -61,4 +61,13 @@ function initMap() {
     position: { lat: 30.2672, lng: -97.7431 },
     map: map
   });
-}
+};
+
+$("#btnOver21").click(function(){
+  alert("over 21")
+});
+
+$("#btnUnder21").click(function(){
+  alert("under 21")
+});
+
