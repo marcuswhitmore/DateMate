@@ -13,6 +13,22 @@ firebase.initializeApp(config);
 // Create a variable to reference the database.
 var database = firebase.database();
 
+// Function that will Log address to DOM
+  function geoCode() {
+        var location = '22 main st Boston MA'; // Eventually Zomato Address data
+        axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+          params:{
+            address:location,
+            key:'AIzaSyB3Kk7w3jpS9IjdxbcnVHSHcU-RS7PHMys'
+          }
+        }).then(function(response){
+          console.log(response);
+
+
+          console.log(response.data.results[0].formatted_address);
+        })
+      }
+  geoCode();
 
 var zomatoCityId;
 $(document).on("click", "#submit", function() {
@@ -21,6 +37,7 @@ $(document).on("click", "#submit", function() {
   var city = $("#theCity").val().trim();
   var state = $("#theState").val().trim();
   $("#theCity").val("");
+  $("#theState").val("");
   $.ajax({
     url: "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state ,
     method: "GET",
@@ -51,27 +68,6 @@ $(document).on("click", "#submit", function() {
   });
 
 });
- 
-
-  
-
-// this may be helpful for adding the map
-// https://developers.google.com/maps/documentation/javascript/adding-a-google-map
-// function initMap() {
-//   // The location of Uluru
-//   var uluru = {lat: -25.344, lng: 131.036};
-//   // The map, centered at Uluru
-//   var map = new google.maps.Map(
-//       document.getElementById('map'), {zoom: 4, center: uluru});
-//   // The marker, positioned at Uluru
-//   var marker = new google.maps.Marker({position: uluru, map: map});
-// }
-
-// google maps embeded api key
-// AIzaSyCHk5Xc_Ch01g0I6Bhn6R5bj0TMpYhHGRI
-
-// google maps javascript api key
-// AIzaSyCHk5Xc_Ch01g0I6Bhn6R5bj0TMpYhHGRI
 
 // Map displaying on DOM
 var gApiKey = "AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE";
@@ -84,6 +80,8 @@ function initMap() {
 
   };
 
+
+
   var map = new google.maps.Map(document.getElementById("map"), options);
 
   var marker = new google.maps.Marker({
@@ -92,6 +90,7 @@ function initMap() {
   });
   
   var map = new google.maps.Map(document.getElementById("map"), options);
+  
 
   var marker = new google.maps.Marker({
     position: { lat: 30.2672, lng: -97.7431 },
@@ -127,6 +126,7 @@ function initMap() {
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       };
+   
 
 
 
