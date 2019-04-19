@@ -1,3 +1,4 @@
+//Firebase config data
 var config = {
   apiKey: "AIzaSyCVGbHah9ZOba-AuUk1KZxnlLmvjBjJtgk",
   authDomain: "forclass-4f95c.firebaseapp.com",
