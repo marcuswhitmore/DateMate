@@ -64,4 +64,18 @@ function initMap() {
     position: { lat: 30.2672, lng: -97.7431 },
     map: map
   });
-}
+};
+
+// var $newdiv1 = $( "<div id='object1'></div>" ),
+  
+// when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
+$("#btnOver21").click(function(){
+  console.log("Over 21")  
+ // $( "body" ).append( $newdiv1);
+});
+
+$("#btnUnder21").click(function(){
+  console.log("under 21")
+
+});
+

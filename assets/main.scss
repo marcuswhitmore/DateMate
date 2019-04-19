@@ -2,15 +2,13 @@
 
 
 $colors: (
-    primary: #000DFF,
+    primary: rgb(255, 10, 141),
     secondary: #000DFD,
-    accent: #FF00FF,
+    accent: rgb(14, 57, 114),
 );
 
 // necessary for full background
-body, html {
-    height: 100%;
-};
+
 // map-get calls property of color
 body {
     margin: 0;
