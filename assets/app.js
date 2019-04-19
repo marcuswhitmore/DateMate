@@ -51,8 +51,10 @@ var gApiKey = "AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE";
 var map;
 function initMap() {
   var options = {
-    zoom: 8,
-    center: { lat: 30.2672, lng: -97.7431 }
+    zoom: 14,
+    center: { lat: 30.2672, lng: -97.7431 },
+    mapTypeId: 'hybrid'
+
   };
 
   var map = new google.maps.Map(document.getElementById("map"), options);
