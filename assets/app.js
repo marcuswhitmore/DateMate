@@ -76,7 +76,7 @@ $("#btnOver21").click(function(){
 
 $("#btnUnder21").click(function(){
   console.log("under 21")
-  var go_to_url = "https://www.google.com/";
+  var go_to_url = "https://www.chuckecheese.com/";
   //this will redirect us in same window
   document.location.href = go_to_url;
 });
