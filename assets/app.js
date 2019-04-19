@@ -63,11 +63,16 @@ function initMap() {
   });
 };
 
+// var $newdiv1 = $( "<div id='object1'></div>" ),
+  
+// when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
 $("#btnOver21").click(function(){
-  alert("over 21")
+  console.log("Over 21")  
+ // $( "body" ).append( $newdiv1);
 });
 
 $("#btnUnder21").click(function(){
-  alert("under 21")
+  console.log("under 21")
+
 });
 
