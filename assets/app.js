@@ -13,21 +13,47 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-var zomatoData;
+var zomatoCityId;
 $(document).on("click", "#submit", function() {
+  
+
   var city = $("#theCity").val().trim();
+  var state = $("#theState").val().trim();
   $("#theCity").val("");
   $.ajax({
-    url: "https://developers.zomato.com/api/v2.1/cities?q=" + city,
+    url: "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state ,
     method: "GET",
     headers: {
       "user-key": "3373e99a07815c6329a67cf51dc7e958"
     }
   }).then(function(response) {
-    console.log(response);
-    zomatoData = response;
+    console.log(response.location_suggestions[0].id);
+    zomatoCityId = response.location_suggestions[0].id.toString();
+    console.log(zomatoCityId)
+
+    $.ajax({
+      url: "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomatoCityId + "&entity_type=city&sort=rating",
+      method: "GET",
+      headers: {
+        "user-key": "3373e99a07815c6329a67cf51dc7e958"
+      }
+    }).then(function(response) {
+      console.log(response);
+      console.log(response.restaurants[0].restaurant.name)  // Name of restaurant
+      console.log(response.restaurants[0].restaurant.menu_url)  // menu link
+      console.log(response.restaurants[0].restaurant.featured_image) //image url
+      console.log(response.restaurants[0].restaurant.user_rating.aggregate_rating)    //zomato user rating
+   
+   
+      zomatoData = response;
+    });
   });
+
 });
+ 
+
+  
+
 // this may be helpful for adding the map
 // https://developers.google.com/maps/documentation/javascript/adding-a-google-map
 // function initMap() {
