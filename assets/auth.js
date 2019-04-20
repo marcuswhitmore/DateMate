@@ -4,12 +4,13 @@ var provider = new firebase.auth.GoogleAuthProvider();
 //use the user's defualt device language
 firebase.auth().useDeviceLanguage();
 
-provider.addScope('email');
-provider.addScope('profile');
+var userEmail = provider.addScope('email');
+var userProfile = provider.addScope('profile');
 
 //Store user data in Firebase
 function writeUserData(newUser) {
-
+    firebase.database().ref('users/' + newUser).set();
+    console.log(newUser);
 }
 
 //make branch, add pics, push to origin
@@ -23,7 +24,7 @@ $("#btn_sign_in").on("click", function () {
 
         //This stores the signed-in user's info
         var user = result.user;
-        //writeUserData(user);
+        writeUserData(user);
 
     }).catch(function (error) {
         //This handles error messages here
