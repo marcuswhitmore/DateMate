@@ -196,13 +196,19 @@ function initMap() {
 
 
 // when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
+$(document).ready(function(){
+  $("#testLoad").hide();
+  $("#testHide").hide();
+})
+
 $("#btnOver21").click(function(){
   console.log("Over 21")  
  // $( "body" ).append( $newdiv1);
  
  // hide div with id of agePopUp
  $("#agePopUp").hide();
- $("show").show();
+ $("#testLoad").show();
+ $("#testHide").show();
 });
 
 $("#btnUnder21").click(function(){
