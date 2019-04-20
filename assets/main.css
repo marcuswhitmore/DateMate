@@ -1,11 +1,11 @@
 body {
+  background-image: url("images/background1.png");
   margin: 0;
-  background-color: #0e3972;
   text-align: center;
 }
 
 h1 {
-  color: #7c2450;
+  color: #ff0080;
 }
 
 #map {

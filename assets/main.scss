@@ -2,17 +2,18 @@
 
 
 $colors: (
-    primary: rgb(124, 36, 80),
+    primary: rgb(255, 0, 128),
     secondary: #000DFD,
-    accent: rgb(14, 57, 114),
+    accent: rgb(101, 152, 219),
 );
 
 // necessary for full background
 
 // map-get calls property of color
 body {
+    background-image: url("images/background1.png");
     margin: 0;
-    background-color: map-get($colors, accent);
+    //  background-color: map-get($colors, accent);
     text-align: center;
 };
 

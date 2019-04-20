@@ -32,6 +32,16 @@ var database = firebase.database();
 
 var zomatoCityId;
 
+var categoryIds = {
+
+  Dinner:"10",
+  Lunch: "9",
+  Breakfast:"8",
+  Delivery:"1",
+  Cafes:"6"
+  
+}
+
 //the is our food cards
 function foodResults(response) {
   return `
@@ -197,8 +207,8 @@ function initMap() {
 
 // when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
 $(document).ready(function(){
-  $("#testLoad").hide();
-  $("#testHide").hide();
+  // $("#testLoad").hide();
+  // $("#testHide").hide();
 })
 
 $("#btnOver21").click(function(){
