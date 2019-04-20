@@ -13,23 +13,6 @@ firebase.initializeApp(config);
 // Create a variable to reference the database.
 var database = firebase.database();
 
-// Function that will Log address to DOM
-  function geoCode() {
-        var location = '22 main st Boston MA'; // Eventually Zomato Address data
-        axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
-          params:{
-            address:location,
-            key:'AIzaSyB3Kk7w3jpS9IjdxbcnVHSHcU-RS7PHMys'
-          }
-        }).then(function(response){
-          console.log(response);
-
-
-          console.log(response.data.results[0].formatted_address);
-        })
-      }
-  geoCode();
-
 var zomatoCityId;
 
 //the is our food cards
@@ -56,6 +39,7 @@ function foodResults(response) {
 }
 
 var zomatoCityId;
+var sample;
 
 $(document).on("click", "#submit", function() {
   var city = $("#theCity")
@@ -89,14 +73,16 @@ $(document).on("click", "#submit", function() {
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
       }
-    }).then(function(response) {
+    }).then(function (response) {
+        /*
+         //commented out console logs for debugging purposes
       console.log(response);
       console.log(response.restaurants[0].restaurant.name); // Name of restaurant
       console.log(response.restaurants[0].restaurant.menu_url); // menu link
       console.log(response.restaurants[0].restaurant.featured_image); //image url
       console.log(
         response.restaurants[0].restaurant.user_rating.aggregate_rating
-      );
+      );*/
       function geoCode() {
         // Prevents actual submit
 
@@ -115,7 +101,9 @@ $(document).on("click", "#submit", function() {
             var lat = response.data.results[0].geometry.location.lat; // Address - LongLat stored in a variable
             var lng = response.data.results[0].geometry.location.lng; // Address - LongLat stored in a variable
             console.log(lng);
-            console.log(lat);
+              console.log(lat);
+  
+              initMap(lat, lng, location); //John and Thomas are working on this function and call
           });
       }
       geoCode();
@@ -129,13 +117,15 @@ $(document).on("click", "#submit", function() {
   });
 });
 
+
 // Map displaying on DOM
 var gApiKey = "AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE";
 var map;
-function initMap() {
+function initMap(lat, lng, location) {
+
   var options = {
     zoom: 14,
-    center: { lat: 30.2672, lng: -97.7431 },
+    center: {lat: lat, lng: lng}, //{ lat: 30.2672, lng: -97.7431 },
     mapTypeId: 'hybrid'
 
   };
