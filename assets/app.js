@@ -67,10 +67,13 @@ $(document).on("click", "#submit", function() {
     .val()
     .trim();
   $("#theCity").val("");
-  var category = 
+  var category =  $("#theCategory").val().trim();
+  console.log (category);
+  
 
   //this call gets a city id from zomato using input to use on next call
   $.ajax({
+    
     url:
       "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state,
     method: "GET",
@@ -85,9 +88,7 @@ $(document).on("click", "#submit", function() {
     //this is the actual search call
     $.ajax({
       url:
-        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +
-        zomatoCityId +
-        "&entity_type=city&sort=rating",
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating",
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
@@ -200,7 +201,7 @@ function initMap() {
 
 // when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
 $(document).ready(function(){
-  // $("#testLoad").hide();
+  
   // $("#testHide").hide();
 })
 
@@ -210,7 +211,7 @@ $("#btnOver21").click(function(){
  
  // hide div with id of agePopUp
  $("#agePopUp").hide();
- $("#testLoad").show();
+ 
  $("#testHide").show();
 });
 
