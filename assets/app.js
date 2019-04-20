@@ -246,6 +246,7 @@ function initMap(lat, lng, location) {
 $(document).ready(function(){
   $("#testLoad").hide();
   $("#testHide").hide();
+  $("#mapResults").hide();
 })
 
 $("#btnOver21").click(function(){
@@ -265,6 +266,9 @@ $("#btnUnder21").click(function(){
   document.location.href = go_to_url;
 });
 
+$("#submit").click(function() {
+  $("#mapResults").show();
+})
 // {
 //   "categories": [
 //     {

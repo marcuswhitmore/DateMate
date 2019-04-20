@@ -1,5 +1,7 @@
 body {
+
   background-image: url("images/testimage.jpg");
+
   background-size: cover;
   width: 100%;
   height: auto;
@@ -9,6 +11,10 @@ body {
 
 h1 {
   color: #ff0080;
+}
+
+#agePopUp {
+  border: solid;
 }
 
 #map {

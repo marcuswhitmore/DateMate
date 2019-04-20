@@ -9,12 +9,15 @@ $colors: (
 
 // map-get calls property of color
 body {
+
     background-image: url("images/testimage.jpg");
+
    // this code makes the image responsive
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    // background-color: aquamarine;
     width: 100%;
     height: auto;
     margin: 0;
@@ -25,6 +28,9 @@ h1 {
     color: map-get($colors, primary);
 };
 
+#agePopUp {
+ border: solid;
+}
 #map {
     height: 10em;
     width: 10em;
