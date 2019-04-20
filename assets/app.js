@@ -15,6 +15,8 @@ var database = firebase.database();
 
 var zomatoCityId;
 
+
+
 //the is our food cards
 function foodResults(response) {
   return `
@@ -49,9 +51,13 @@ $(document).on("click", "#submit", function() {
     .val()
     .trim();
   $("#theCity").val("");
+  var category =  $("#theCategory").val().trim();
+  
+  
 
   //this call gets a city id from zomato using input to use on next call
   $.ajax({
+    
     url:
       "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state,
     method: "GET",
@@ -64,11 +70,21 @@ $(document).on("click", "#submit", function() {
     zomatoCityId = response.location_suggestions[0].id.toString();
     console.log(zomatoCityId);
     //this is the actual search call
+
     $.ajax({
       url:
-        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +
-        zomatoCityId +
-        "&entity_type=city&sort=rating",
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=3",
+      method: "GET",
+      headers: {
+        "user-key": "3373e99a07815c6329a67cf51dc7e958"
+      }
+    }).then(function(response) {
+
+    })
+
+    $.ajax({
+      url:
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=" +category,
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
@@ -187,8 +203,8 @@ function initMap(lat, lng, location) {
 
 // when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
 $(document).ready(function(){
-  $("#testLoad").hide();
-  $("#testHide").hide();
+  
+  // $("#testHide").hide();
 })
 
 $("#btnOver21").click(function(){
@@ -197,7 +213,7 @@ $("#btnOver21").click(function(){
  
  // hide div with id of agePopUp
  $("#agePopUp").hide();
- $("#testLoad").show();
+ 
  $("#testHide").show();
 });
 

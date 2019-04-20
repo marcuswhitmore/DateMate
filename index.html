@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Group Project</title>
+    <title>Date Mate</title>
     <link href="https://fonts.googleapis.com/css?family=Asap:400,500,700" rel="stylesheet">
     <!-- Sass & Style -->
     <link rel="stylesheet" href="assets/main.css">
@@ -13,35 +13,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 </head>
 <body>
-    <div id="bg"></div>
-    <h1 id="testLoad">Find Yur Food</h1>
     <!-- This Div Will Pop up first and show a button, user choose either 21 and up or Not-->
     <div id="agePopUp">
-        <h2>Verify Your Age</h2>
+        <h1>Date Mate</h1>
         <p>You must Be 21 to Drink/Date</p>
         <p id="age-Buttons">
-        <input id="btnOver21" type="button" value="I Am over 21">
-        <input id="btnUnder21" type="button" value="I am Under 21">
+        <input id="btnOver21" type="button" value="Over 21">
+        <input id="btnUnder21" type="button" value="Under 21">
         </p>
     </div>
     <div id="testHide">
     <div>
         Search your City for a Great Place to eat and a bar close by.
         <p>
-        <input id="theCity" type="text" placeholder="Insert City">
-        <input id="theState" type="text" placeholder="Insert State">
-        <div class="column-6 form-select">
-            <select name="" id="">
-              <option value="" disabled="disabled" selected="selected">Choose a character</option>
-              <option>Delivery</option>
-              <option>Cafes</option>
-              <option>Breakfast</option>
-              <option>Lunch</option>
-              <option>Dinner</option>
-              <option>d</option>
+        <input id="theCity" type="text" placeholder="City">
+        <input id="theState" type="text" placeholder="State">
+        <div >
+            <select  id="theCategory">
+              <option value="" disabled="disabled" selected="selected">Choose a Category</option>
+              <option value="6">Cafes</option>
+              <option value="8">Breakfast</option>
+              <option value="9">Lunch</option>
+              <option value="10">Dinner</option>
             </select>
           </div>
         <button id="submit">Submit</button>
@@ -51,11 +46,11 @@
     <div id="map"></div>
 
     <div id="foodCards"> 
-        <span id="foodCards">insert restuarant</span>
+        <span id="foodCards"></span>
     </div>
 
-    <div>
-        <span>insert bar</span>
+    <div id="nightlifeCards">
+        <span></span>
     </div>
     
     <div id="Map"></div>
