@@ -5,3 +5,4 @@ An application that will plan your evening for you.
 ☆ What restaurant is trending in your city? How close is it to you?
 
 
+
