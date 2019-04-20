@@ -89,7 +89,7 @@ $(document).on("click", "#submit", function() {
 
     $.ajax({
       url:
-        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=" +category,
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=",
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
