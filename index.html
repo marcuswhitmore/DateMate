@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="bg"></div>
-    <h1>Find Yur Food</h1>
+    <h1 id="testLoad">Find Yur Food</h1>
     <!-- This Div Will Pop up first and show a button, user choose either 21 and up or Not-->
     <div id="agePopUp">
         <h2>Verify Your Age</h2>
@@ -27,11 +27,23 @@
         <input id="btnUnder21" type="button" value="I am Under 21">
         </p>
     </div>
+    <div id="testHide">
     <div>
         Search your City for a Great Place to eat and a bar close by.
         <p>
         <input id="theCity" type="text" placeholder="Insert City">
         <input id="theState" type="text" placeholder="Insert State">
+        <div class="column-6 form-select">
+            <select name="" id="">
+              <option value="" disabled="disabled" selected="selected">Choose a character</option>
+              <option>Delivery</option>
+              <option>Cafes</option>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+              <option>d</option>
+            </select>
+          </div>
         <button id="submit">Submit</button>
 
         </p>
@@ -47,6 +59,8 @@
     </div>
     
     <div id="Map"></div>
+
+    </div>
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Jquery -->
