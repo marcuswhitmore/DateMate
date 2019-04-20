@@ -15,8 +15,6 @@ var database = firebase.database();
 
 var zomatoCityId;
 
-
-
 //the is our food cards
 function foodResults(response) {
   return `
@@ -51,13 +49,9 @@ $(document).on("click", "#submit", function() {
     .val()
     .trim();
   $("#theCity").val("");
-  var category =  $("#theCategory").val().trim();
-  
-  
 
   //this call gets a city id from zomato using input to use on next call
   $.ajax({
-    
     url:
       "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state,
     method: "GET",
@@ -70,21 +64,68 @@ $(document).on("click", "#submit", function() {
     zomatoCityId = response.location_suggestions[0].id.toString();
     console.log(zomatoCityId);
     //this is the actual search call
+    var gApiKey = "AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE";
+var map;
+function initMap(lat, lng, location) {
 
-    $.ajax({
-      url:
-        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=3",
-      method: "GET",
-      headers: {
-        "user-key": "3373e99a07815c6329a67cf51dc7e958"
+  var options = {
+    zoom: 14,
+    center: {lat: lat, lng: lng}, //{ lat: 30.2672, lng: -97.7431 },
+    mapTypeId: 'hybrid'
+
+  };
+
+
+
+  var map = new google.maps.Map(document.getElementById("map"), options);
+
+  var marker = new google.maps.Marker({
+    position: { lat: 30.2672, lng: -97.7431 },
+    map: map
+  });
+  
+  var map = new google.maps.Map(document.getElementById("map"), options);
+  
+
+  var marker = new google.maps.Marker({
+    position: { lat: 30.2672, lng: -97.7431 },
+    map: map
+  });
+  infoWindow = new google.maps.InfoWindow;
+
+// This statement is asking our user if they would allow us to use their location
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('You are Here');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
       }
-    }).then(function(response) {
 
-    })
-
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      };
     $.ajax({
       url:
-        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=" +category,
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +
+        zomatoCityId +
+        "&entity_type=city&sort=rating",
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
@@ -203,8 +244,8 @@ function initMap(lat, lng, location) {
 
 // when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
 $(document).ready(function(){
-  
-  // $("#testHide").hide();
+  $("#testLoad").hide();
+  $("#testHide").hide();
 })
 
 $("#btnOver21").click(function(){
@@ -213,7 +254,7 @@ $("#btnOver21").click(function(){
  
  // hide div with id of agePopUp
  $("#agePopUp").hide();
- 
+ $("#testLoad").show();
  $("#testHide").show();
 });
 
