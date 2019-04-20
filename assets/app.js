@@ -68,7 +68,7 @@ $(document).on("click", "#submit", function() {
     .trim();
   $("#theCity").val("");
   var category =  $("#theCategory").val().trim();
-  console.log (category);
+  
   
 
   //this call gets a city id from zomato using input to use on next call
@@ -86,9 +86,19 @@ $(document).on("click", "#submit", function() {
     zomatoCityId = response.location_suggestions[0].id.toString();
     console.log(zomatoCityId);
     //this is the actual search call
+
     $.ajax({
       url:
-        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating",
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=" +category,
+      method: "GET",
+      headers: {
+        "user-key": "3373e99a07815c6329a67cf51dc7e958"
+      }
+    }).then(function(response) {
+
+    $.ajax({
+      url:
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=" +category,
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
