@@ -15,41 +15,76 @@ var database = firebase.database();
 
 
 var zomatoCityId;
-$(document).on("click", "#submit", function() {
-  
 
-  var city = $("#theCity").val().trim();
-  var state = $("#theState").val().trim();
+//the is our food cards
+function foodResults(response) {
+  return `
+    <div class=theFood> 
+
+    <h5>${response.restaurant.name} </h5>
+
+    <img  class="foodPictures img-fluid"src="${
+      response.restaurant.featured_image
+    }" alt="restaurantPicture" >
+
+    <a href="${response.restaurant.menu_url}" target ="_blank">Menu Link  </a>
+
+    <p>Rating &nbsp ${response.restaurant.user_rating.aggregate_rating} </p>
+    
+    
+    </div>
+  
+  
+  
+  `;
+}
+
+var zomatoCityId;
+
+$(document).on("click", "#submit", function() {
+  var city = $("#theCity")
+    .val()
+    .trim();
+  var state = $("#theState")
+    .val()
+    .trim();
   $("#theCity").val("");
+  //this call gets a city id from zomato using input to use on next call
   $.ajax({
-    url: "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state ,
+    url:
+      "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state,
     method: "GET",
     headers: {
       "user-key": "3373e99a07815c6329a67cf51dc7e958"
     }
   }).then(function(response) {
     console.log(response.location_suggestions[0].id);
+    //this gets the city id from our response
     zomatoCityId = response.location_suggestions[0].id.toString();
-    console.log(zomatoCityId)
-
+    console.log(zomatoCityId);
+    //this is the actual search call
     $.ajax({
-      url: "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomatoCityId + "&entity_type=city&sort=rating",
+      url:
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +
+        zomatoCityId +
+        "&entity_type=city&sort=rating",
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
       }
     }).then(function(response) {
       console.log(response);
-      console.log(response.restaurants[0].restaurant.name)  // Name of restaurant
-      console.log(response.restaurants[0].restaurant.menu_url)  // menu link
-      console.log(response.restaurants[0].restaurant.featured_image) //image url
-      console.log(response.restaurants[0].restaurant.user_rating.aggregate_rating)    //zomato user rating
-   
-   
+      console.log(response.restaurants[0].restaurant.name); // Name of restaurant
+      console.log(response.restaurants[0].restaurant.menu_url); // menu link
+      console.log(response.restaurants[0].restaurant.featured_image); //image url
+      console.log(
+        response.restaurants[0].restaurant.user_rating.aggregate_rating
+      );
+      //this adds response data to the dom
+      $("#foodCards").html(response.restaurants.map(foodResults));
       zomatoData = response;
     });
   });
-
 });
  
 
