@@ -168,9 +168,16 @@ function initMap() {
 // var $newdiv1 = $( "<div id='object1'></div>" ),
   
 // when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
+
+
+// when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
 $("#btnOver21").click(function(){
   console.log("Over 21")  
  // $( "body" ).append( $newdiv1);
+ 
+ // hide div with id of agePopUp
+ $("#agePopUp").hide();
+ $("show").show();
 });
 
 $("#btnUnder21").click(function(){
@@ -179,8 +186,6 @@ $("#btnUnder21").click(function(){
   //this will redirect us in same window
   document.location.href = go_to_url;
 });
-
-
 
 // {
 //   "categories": [
