@@ -97,8 +97,33 @@ $(document).on("click", "#submit", function() {
       console.log(
         response.restaurants[0].restaurant.user_rating.aggregate_rating
       );
+      function geoCode() {
+        // Prevents actual submit
+
+        var location = response.restaurants[0].restaurant.location.address; // Zomato Address data
+        axios
+          .get("https://maps.googleapis.com/maps/api/geocode/json", {
+            params: {
+              address: location,
+              key: "AIzaSyB3Kk7w3jpS9IjdxbcnVHSHcU-RS7PHMys"
+            }
+          })
+          .then(function(response) {
+            console.log(response);
+
+            console.log(response.data.results[0].formatted_address);
+            var lat = response.data.results[0].geometry.location.lat; // Address - LongLat stored in a variable
+            var lng = response.data.results[0].geometry.location.lng; // Address - LongLat stored in a variable
+            console.log(lng);
+            console.log(lat);
+          });
+      }
+      geoCode();
       //this adds response data to the dom
       $("#foodCards").html(response.restaurants.map(foodResults));
+
+
+
       zomatoData = response;
     });
   });
