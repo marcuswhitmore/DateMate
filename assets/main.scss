@@ -9,7 +9,9 @@ $colors: (
 
 // map-get calls property of color
 body {
-    background-image: url(images/images.jpeg) no-repeat center center fixed;
+
+    background-image: url("images/testimage.jpg");
+
    // this code makes the image responsive
     -webkit-background-size: cover;
     -moz-background-size: cover;
