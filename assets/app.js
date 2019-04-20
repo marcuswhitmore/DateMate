@@ -32,15 +32,7 @@ var database = firebase.database();
 
 var zomatoCityId;
 
-var categoryIds = {
 
-  Dinner:"10",
-  Lunch: "9",
-  Breakfast:"8",
-  Delivery:"1",
-  Cafes:"6"
-  
-}
 
 //the is our food cards
 function foodResults(response) {
@@ -75,6 +67,7 @@ $(document).on("click", "#submit", function() {
     .val()
     .trim();
   $("#theCity").val("");
+  var category = 
 
   //this call gets a city id from zomato using input to use on next call
   $.ajax({
