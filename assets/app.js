@@ -96,6 +96,8 @@ $(document).on("click", "#submit", function() {
       }
     }).then(function(response) {
 
+    })
+
     $.ajax({
       url:
         "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +zomatoCityId +"&entity_type=city&sort=rating&category=" +category,
