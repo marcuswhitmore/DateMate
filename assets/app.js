@@ -20,7 +20,7 @@ function foodResults(response) {
   return `
     <div class=theFood> 
 
-    <h5>${response.restaurant.name} </h5>
+    <h5 id="restName">${response.restaurant.name} </h5>
 
     <img  class="foodPictures img-fluid"src="${
       response.restaurant.featured_image
@@ -267,8 +267,18 @@ $("#btnUnder21").click(function(){
 });
 
 $("#submit").click(function() {
+  $("#testHide").hide();
   $("#mapResults").show();
 })
+
+// snippet to change background img
+// var imageSource = "";
+
+// $("#img").click(function(){
+//    imageSource = $(this).attr("src");
+//    $('#canvas').css("background-image", "url("+imageSource+")");  
+// });
+
 // {
 //   "categories": [
 //     {

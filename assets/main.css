@@ -1,8 +1,6 @@
 body {
-
-  background-image: url("images/testimage.jpg");
-
-  background-size: cover;
+  background: #eeaeca;
+  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
   width: 100%;
   height: auto;
   margin: 0;
@@ -10,11 +8,38 @@ body {
 }
 
 h1 {
-  color: #ff0080;
+  color: #FD495C;
+}
+
+#btnOver21, #btnUnder21 {
+  font-size: 100%;
+  border-color: #FD495C;
+  background: transparent;
+  margin: 10px;
+}
+
+input {
+  background: transparent;
+  border-color: #FD495C;
+  text-align: center;
+}
+
+select {
+  background: transparent;
+}
+
+#submit {
+  background-color: #FD495C;
+  color: gray;
 }
 
 #agePopUp {
   border: solid;
+  margin-top: 10em;
+}
+
+#testHide {
+  margin-top: 50px;
 }
 
 #map {
@@ -31,10 +56,15 @@ h1 {
   height: 10rem;
   padding: 50px;
   margin: 50px;
+  float: left;
 }
 
 .foodPictures {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 10em;
+  max-height: 10rem;
+}
+
+#restName {
+  color: #000DFD;
 }
 /*# sourceMappingURL=main.css.map */
