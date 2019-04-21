@@ -20,7 +20,7 @@ function foodResults(response) {
   return `
     <div class=theFood> 
 
-    <h5>${response.restaurant.name} </h5>
+    <h5 id="restName">${response.restaurant.name} </h5>
 
     <img  class="foodPictures img-fluid"src="${
       response.restaurant.featured_image

@@ -2,7 +2,7 @@
 
 
 $colors: (
-    primary: rgb(255, 0, 128),
+    primary:#FD495C,
     secondary: #000DFD,
     accent: rgb(101, 152, 219),
 );
@@ -10,7 +10,7 @@ $colors: (
 // map-get calls property of color
 body {
 
-    background-image: url("images/testimage.jpg");
+    background-image: url("images/images.jpeg");
 
    // this code makes the image responsive
     -webkit-background-size: cover;
@@ -27,6 +27,11 @@ body {
 h1 {
     color: map-get($colors, primary);
 };
+
+#btnOver21, #btnUnder21 {
+    font-size: 100%;
+    border-color:#FD495C;
+}
 
 #agePopUp {
  border: solid;
@@ -48,6 +53,10 @@ h1 {
 }
 
 .foodPictures {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 10em;
+    max-height: 10rem;
+}
+// restaurant name 
+#restName {
+    color: #000DFD
 }

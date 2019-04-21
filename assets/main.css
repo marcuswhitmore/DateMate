@@ -1,7 +1,5 @@
 body {
-
-  background-image: url("images/testimage.jpg");
-
+  background-image: url("images/images.jpeg");
   background-size: cover;
   width: 100%;
   height: auto;
@@ -10,7 +8,12 @@ body {
 }
 
 h1 {
-  color: #ff0080;
+  color: #FD495C;
+}
+
+#btnOver21, #btnUnder21 {
+  font-size: 100%;
+  border-color: #FD495C;
 }
 
 #agePopUp {
@@ -34,7 +37,11 @@ h1 {
 }
 
 .foodPictures {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 10em;
+  max-height: 10rem;
+}
+
+#restName {
+  color: #000DFD;
 }
 /*# sourceMappingURL=main.css.map */
