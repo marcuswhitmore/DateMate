@@ -269,6 +269,15 @@ $("#btnUnder21").click(function(){
 $("#submit").click(function() {
   $("#mapResults").show();
 })
+
+// snippet to change background img
+// var imageSource = "";
+
+// $("#img").click(function(){
+//    imageSource = $(this).attr("src");
+//    $('#canvas').css("background-image", "url("+imageSource+")");  
+// });
+
 // {
 //   "categories": [
 //     {
