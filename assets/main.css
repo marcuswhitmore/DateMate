@@ -18,6 +18,21 @@ h1 {
   margin: 10px;
 }
 
+input {
+  background: transparent;
+  border-color: #FD495C;
+  text-align: center;
+}
+
+select {
+  background: transparent;
+}
+
+#submit {
+  background-color: #FD495C;
+  color: gray;
+}
+
 #agePopUp {
   border: solid;
   margin-top: 10em;
