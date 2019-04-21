@@ -37,6 +37,7 @@ h1 {
   height: 10rem;
   padding: 50px;
   margin: 50px;
+  float: left;
 }
 
 .foodPictures {
