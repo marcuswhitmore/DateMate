@@ -15,10 +15,12 @@ h1 {
   font-size: 100%;
   border-color: #FD495C;
   background: transparent;
+  margin: 10px;
 }
 
 #agePopUp {
   border: solid;
+  margin-top: 10em;
 }
 
 #map {
