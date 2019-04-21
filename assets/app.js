@@ -267,6 +267,7 @@ $("#btnUnder21").click(function(){
 });
 
 $("#submit").click(function() {
+  $("#testHide").hide();
   $("#mapResults").show();
 })
 
