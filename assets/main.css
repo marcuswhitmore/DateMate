@@ -38,6 +38,10 @@ select {
   margin-top: 10em;
 }
 
+#testHide {
+  margin-top: 50px;
+}
+
 #map {
   height: 10em;
   width: 10em;
