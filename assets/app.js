@@ -20,11 +20,13 @@ function foodResults(response) {
   return `
     <div class=theFood> 
 
-    <h5 id="restName">${response.restaurant.name} </h5>
-
     <img  class="foodPictures img-fluid"src="${
       response.restaurant.featured_image
     }" alt="restaurantPicture" >
+    
+    <h5 id="restName">${response.restaurant.name} </h5>
+
+    
 
     <a href="${response.restaurant.menu_url}" target ="_blank">Menu Link  </a>
 
