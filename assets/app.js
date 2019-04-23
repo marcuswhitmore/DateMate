@@ -1,4 +1,3 @@
-//Firebase config data
 var config = {
   apiKey: "AIzaSyCVGbHah9ZOba-AuUk1KZxnlLmvjBjJtgk",
   authDomain: "forclass-4f95c.firebaseapp.com",
@@ -9,48 +8,39 @@ var config = {
 };
 
 firebase.initializeApp(config);
+// AIzaSyB3Kk7w3jpS9IjdxbcnVHSHcU GEO
+// AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE Script API
 
-// Create a variable to reference the database.
+// GLOBAL VARIABLES
+var lat;
+var lng;
+var location;
+
 var database = firebase.database();
 
-var zomatoCityId;
 
-//the is our food cards
+// ZOMATO RESTAURANT JSON DATA CARD
+// TEMPLATE LITERAL CONTAINING RESTAURANT - NAME - IMAGE - MENU/URL - RATING == DISPLAYED AFTER ONCLICK
 function foodResults(response) {
   return `
     <div class=theFood> 
-
     <h5 id="restName">${response.restaurant.name} </h5>
-
-    <img  class="foodPictures img-fluid"src="${
-      response.restaurant.featured_image
-    }" alt="restaurantPicture" >
-
+    <img  class="foodPictures img-fluid"src="${response.restaurant.featured_image}" alt="restaurantPicture" >
     <a href="${response.restaurant.menu_url}" target ="_blank">Menu Link  </a>
-
     <p>Rating &nbsp ${response.restaurant.user_rating.aggregate_rating} </p>
-    
-    
     </div>
-  
-  
-  
-  `;
+    `;
 }
-
 var zomatoCityId;
-var sample;
-
 $(document).on("click", "#submit", function() {
-  var city = $("#theCity")
-    .val()
-    .trim();
-  var state = $("#theState")
-    .val()
-    .trim();
+  // INPUT VALUES - CITY - STATE
+  var city = $("#theCity").val().trim();
+  var state = $("#theState").val().trim();
+  // CLEARS INPUT - CITY - STATE
   $("#theCity").val("");
+  $("#theState").val("");
 
-  //this call gets a city id from zomato using input to use on next call
+  // CITY ID ZOMATO ================================================= 1ST CALL - ZOMATO - CITY - STATE
   $.ajax({
     url:
       "https://developers.zomato.com/api/v2.1/cities?q=" + city + "," + state,
@@ -59,190 +49,96 @@ $(document).on("click", "#submit", function() {
       "user-key": "3373e99a07815c6329a67cf51dc7e958"
     }
   }).then(function(response) {
-    console.log(response.location_suggestions[0].id);
-    //this gets the city id from our response
+    // CITY ID FROM RESPONSE ============================== 1ST &THEN FUNCTION - ZOMATO - CITY - STATE 
+    // CITY ID TURNED INTO STRING
     zomatoCityId = response.location_suggestions[0].id.toString();
-    console.log(zomatoCityId);
-    //this is the actual search call
-    var gApiKey = "AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE";
-var map;
-function initMap(lat, lng, location) {
-
-  var options = {
-    zoom: 14,
-    center: {lat: lat, lng: lng}, //{ lat: 30.2672, lng: -97.7431 },
-    mapTypeId: 'hybrid'
-
-  };
-
-
-
-  var map = new google.maps.Map(document.getElementById("map"), options);
-
-  var marker = new google.maps.Marker({
-    position: { lat: 30.2672, lng: -97.7431 },
-    map: map
-  });
-  
-  var map = new google.maps.Map(document.getElementById("map"), options);
-  
-
-  var marker = new google.maps.Marker({
-    position: { lat: 30.2672, lng: -97.7431 },
-    map: map
-  });
-  infoWindow = new google.maps.InfoWindow;
-
-// This statement is asking our user if they would allow us to use their location
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are Here');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      };
+    // SEARCH CALL ZOMATO ===================================================== 2ND CALL - ZOMATO
+    // initMap(lat, lng, location);
     $.ajax({
-      url:
-        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +
-        zomatoCityId +
-        "&entity_type=city&sort=rating",
+      url:"https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" + zomatoCityId + "&entity_type=city&sort=rating",
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
       }
-    }).then(function (response) {
-        /*
-         //commented out console logs for debugging purposes
-      console.log(response);
-      console.log(response.restaurants[0].restaurant.name); // Name of restaurant
-      console.log(response.restaurants[0].restaurant.menu_url); // menu link
-      console.log(response.restaurants[0].restaurant.featured_image); //image url
-      console.log(
-        response.restaurants[0].restaurant.user_rating.aggregate_rating
-      );*/
-      function geoCode() {
-        // Prevents actual submit
-
-        var location = response.restaurants[0].restaurant.location.address; // Zomato Address data
-        axios
-          .get("https://maps.googleapis.com/maps/api/geocode/json", {
+    }).then(function(response){
+    // RESTAURANT RESULTS ZOMATO ============================================== 2ND &THEN FUNCTION - ZOMATO
+    // JQUERY DISPLAYING FOOD RESULTS TO THE DOM
+      $("#foodCards").html(response.restaurants.map(foodResults));
+    // ZOMATO RESPONSE STORED AS ZOMATO DATA ================================== zomatoData = response;
+      zomatoData = response;
+      var location = response.restaurants[0].restaurant.location.address; // Zomato Address Data
+    
+    // GEOCODE CONVERTING RESTAURANT ADDRESS TO LATITIUDE & LONGITUDE ========= 3RD CALL - GOOGLE MAPS
+      axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
             params: {
               address: location,
               key: "AIzaSyB3Kk7w3jpS9IjdxbcnVHSHcU-RS7PHMys"
             }
           })
           .then(function(response) {
-            console.log(response);
-
-            console.log(response.data.results[0].formatted_address);
-            var lat = response.data.results[0].geometry.location.lat; // Address - LongLat stored in a variable
-            var lng = response.data.results[0].geometry.location.lng; // Address - LongLat stored in a variable
-            console.log(lng);
-              console.log(lat);
-  
-              initMap(lat, lng, location); //John and Thomas are working on this function and call
+            // ================================================================ 3RD &THEN FUNCTION - GOOGLE MAPS
+            // Address - Latitude stored in a variable
+            var lat = response.data.results[0].geometry.location.lat; 
+            // Address - Longitude stored in a variable
+            var lng = response.data.results[0].geometry.location.lng;   
+            // John and Thomas are working on this function and call
+            initMap2(lat, lng, location); 
           });
-      }
-      geoCode();
-      //this adds response data to the dom
-      $("#foodCards").html(response.restaurants.map(foodResults));
 
-
-
-      zomatoData = response;
+    
     });
   });
 });
-
-
-// Map displaying on DOM
-var gApiKey = "AIzaSyCA3B7MNAEv9ta8ZOXnteOlqLShIrdIKXE";
-var map;
-function initMap(lat, lng, location) {
-
-  var options = {
-    zoom: 14,
-    center: {lat: lat, lng: lng}, //{ lat: 30.2672, lng: -97.7431 },
+// FIRST MAP ================================================================== USERS LOCATION 
+var map, infowindow;
+function initMap() {
+  var options =  {
+    center: { lat: 30.2672, lng: 97.7431},
+    zoom: 8,
     mapTypeId: 'hybrid'
-
   };
+map = new google.maps.Map(document.getElementById('map'), options);
+infowindow = new google.maps.InfoWindow;
+  //  GEOCODE // ASKS USERS CONSENT FOR THEIR LOCATION
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function (p){
+    var position = {
+      lat: p.coords.latitude,
+      lng: p.coords.longitude 
+    };
+    infowindow.setPosition(position);
+    infowindow.setContent('Your location!')
+    infowindow.open(map);
+  }, function () { 
+      handleLocationError('Geolocation service failed', map.getCenter());
+  })
+} else {
+    handleLocationError('No geolocation available', map.getCenter());
+  }
+}
+
+function handleLocationError (content, position) {
+  infowindow.setPosition(position);
+  infowindow.setContent(content);
+  infowindow.open(map);
+}
+// SECOND MAP ================================================================= 1ST ZOMATO RESTAURANT LOCATION
+var map2, infowindow2;
+function initMap2(lat, lng) {
+  var options =  {
+    center: { lat: lat, lng: lng},
+    zoom: 16,
+    mapTypeId: 'hybrid'
+  };
+map2 = new google.maps.Map(document.getElementById('map'), options);
+infowindow = new google.maps.InfoWindow
+}
 
 
 
-  var map = new google.maps.Map(document.getElementById("map"), options);
-
-  var marker = new google.maps.Marker({
-    position: { lat: 30.2672, lng: -97.7431 },
-    map: map
-  });
-  
-  var map = new google.maps.Map(document.getElementById("map"), options);
-  
-
-  var marker = new google.maps.Marker({
-    position: { lat: 30.2672, lng: -97.7431 },
-    map: map
-  });
-  infoWindow = new google.maps.InfoWindow;
-
-// This statement is asking our user if they would allow us to use their location
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are Here');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      };
-   
 
 
-
-// var $newdiv1 = $( "<div id='object1'></div>" ),
-  
-// when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
-
-
-// when user clicks button with age, page loads html that matches choice, two paths, one for 21 up and one for 20 below
+// DOCUMENT READY // TWO OPTIONS 21+ HIDES BUTTONS // 21- REDIRECTS USERS TO CHUCK E' CHEESES' WEBSITE
 $(document).ready(function(){
   $("#testLoad").hide();
   $("#testHide").hide();
@@ -251,9 +147,8 @@ $(document).ready(function(){
 
 $("#btnOver21").click(function(){
   console.log("Over 21")  
- // $( "body" ).append( $newdiv1);
  
- // hide div with id of agePopUp
+//  HIDES <div id="agePopUp">
  $("#agePopUp").hide();
  $("#testLoad").show();
  $("#testHide").show();
@@ -262,103 +157,12 @@ $("#btnOver21").click(function(){
 $("#btnUnder21").click(function(){
   console.log("under 21")
   var go_to_url = "https://www.chuckecheese.com/";
-  //this will redirect us in same window
+// REDIRECTS USERS TO URL
   document.location.href = go_to_url;
 });
 
 $("#submit").click(function() {
   $("#testHide").hide();
   $("#mapResults").show();
-})
-
-// snippet to change background img
-// var imageSource = "";
-
-// $("#img").click(function(){
-//    imageSource = $(this).attr("src");
-//    $('#canvas').css("background-image", "url("+imageSource+")");  
-// });
-
-// {
-//   "categories": [
-//     {
-//       "categories": {
-//         "id": 1,
-//         "name": "Delivery"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 2,
-//         "name": "Dine-out"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 3,
-//         "name": "Nightlife"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 4,
-//         "name": "Catching-up"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 5,
-//         "name": "Takeaway"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 6,
-//         "name": "Cafes"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 7,
-//         "name": "Daily Menus"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 8,
-//         "name": "Breakfast"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 9,
-//         "name": "Lunch"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 10,
-//         "name": "Dinner"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 11,
-//         "name": "Pubs & Bars"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 13,
-//         "name": "Pocket Friendly Delivery"
-//       }
-//     },
-//     {
-//       "categories": {
-//         "id": 14,
-//         "name": "Clubs & Lounges"
-//       }
-//     }
-//   ]
-// }
+});
 
