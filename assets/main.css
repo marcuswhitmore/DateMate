@@ -1,10 +1,11 @@
 body {
-  background: #eeaeca;
-  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  background-image: url("images/images.jpeg");
+  background-size: cover;
   width: 100%;
   height: auto;
   margin: 0;
   text-align: center;
+  font-family: 'Anton', sans-serif;
 }
 
 h1 {
@@ -57,6 +58,7 @@ select {
   padding: 50px;
   margin: 50px;
   float: left;
+  border: 2px solid #FD495C;
 }
 
 .foodPictures {
@@ -65,6 +67,6 @@ select {
 }
 
 #restName {
-  color: #000DFD;
+  color: #4a5461;
 }
 /*# sourceMappingURL=main.css.map */

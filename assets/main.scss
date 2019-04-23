@@ -1,29 +1,27 @@
 //Sass Variables for Colors. 
 // color from wireframe #FD495C
+// need to add get-map to make changing all colors easier
 
 $colors: (
     primary:#FD495C,
     secondary: #000DFD,
-    accent: rgb(101, 152, 219),
+    accent: rgb(74, 84, 97),
 );
 
 // map-get calls property of color
 body {
-    //temporary gradient until photo can be changed
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-//     background-image: url("images/images.jpeg");
+    background-image: url("images/images.jpeg");
 
-//    // this code makes the image responsive
-//     -webkit-background-size: cover;
-//     -moz-background-size: cover;
-//     -o-background-size: cover;
-//     background-size: cover;
-    // background-color: aquamarine;
+   // this code makes the image responsive
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     width: 100%;
     height: auto;
     margin: 0;
     text-align: center;
+    font-family: 'Anton', sans-serif;
 };
 
 h1 {
@@ -32,14 +30,14 @@ h1 {
 
 #btnOver21, #btnUnder21 {
     font-size: 100%;
-    border-color:#FD495C;
+    border-color: map-get($colors, primary);
     background: transparent;
     margin: 10px;
 }
 
 input {
     background: transparent;
-    border-color: #FD495C;
+    border-color: map-get($colors, primary);
     text-align: center;
 }
 
@@ -48,7 +46,7 @@ select {
 }
 
 #submit {
-    background-color: #FD495C;
+    background-color: map-get($colors, primary);
     color: gray;
 }
 #agePopUp {
@@ -73,6 +71,7 @@ select {
     padding: 50px;
     margin: 50px;
     float: left;
+    border: 2px solid map-get($colors, primary);
 }
 
 .foodPictures {
@@ -81,5 +80,5 @@ select {
 }
 // restaurant name 
 #restName {
-    color: #000DFD
+    color: map-get($colors, accent);
 }
