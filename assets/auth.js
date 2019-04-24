@@ -7,10 +7,16 @@ firebase.auth().useDeviceLanguage();
 var userEmail = provider.addScope('email');
 var userProfile = provider.addScope('profile');
 
+//call this function to stringify any JSON object
+function stringifyJSON(json) {
+    return JSON.stringify(json);
+}
+
 //Store user data in Firebase
 function writeUserData(newUser) {
-    firebase.database().ref('users/' + newUser).set();
-    console.log(newUser);
+    console.log(stringifyJSON(newUser.displayName));
+
+    database.ref("user/" + stringifyJSON(newUser.displayName)).set("user info");
 }
 
 //make branch, add pics, push to origin
@@ -20,7 +26,7 @@ $("#btn_sign_in").on("click", function () {
     //Provide sign-in via Pop-up
     firebase.auth().signInWithPopup(provider).then(function (result) {
         //This provides a Google API token
-        var token = results.credential.accessToken;
+        var token = stringifyJSON(result.credential.accessToken);
 
         //This stores the signed-in user's info
         var user = result.user;
@@ -37,15 +43,6 @@ $("#btn_sign_in").on("click", function () {
         //firebase.auth.authCredential type used
         var credential = error.credential;
     });
-
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            //user signed in
-        }
-        else {
-            //not signed in
-        }
-    });
 })
 
 $("#btn_sign_out").on("click", function () {
@@ -59,12 +56,4 @@ $("#btn_sign_out").on("click", function () {
     });
 })
 
-var user = firebase.auth().currentUser;
-
-if (user) {
-    //current user
-}
-else {
-    //no signed
-}
 
