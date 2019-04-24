@@ -33,6 +33,16 @@ h1 {
     color: map-get($colors, primary);
 };
 
+#h11 {
+    font-family: 'Signpainter', sans-serif;
+    font-size: 1.5em;  
+};
+
+#h12 {
+    font-family: 'montserrat', sans-serif;
+    font-size: 1.5em;
+}
+
 #btnOver21, #btnUnder21 {
     font-size: 100%;
     border-color: map-get($colors, primary);
