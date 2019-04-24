@@ -66,11 +66,12 @@ h1 {
     color: map-get($colors, primary);
 };
 
-#btnOver21, #btnUnder21 {
+#btnOver21, #btnUnder21, #btn_sign_in, #btn_sign_out {
     font-size: 100%;
     border-color: map-get($colors, primary);
     background: transparent;
-    margin: 10px;
+    margin: 5px;
+    padding: 5px;
 }
 
 input {
@@ -95,7 +96,8 @@ select {
 }
 #agePopUp {
  border: solid;
- margin-top: 10em;
+ margin: 1em;
+ padding: 1em;
 }
 #testHide {
     margin-top: 50px;
