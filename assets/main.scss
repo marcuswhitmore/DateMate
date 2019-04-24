@@ -9,7 +9,11 @@ $colors: (
 );
 *:focus {
     outline: none;
-}
+};
+
+#theCategory {
+    background-color: yellow;
+};
 
 // map-get calls property of color
 body {
