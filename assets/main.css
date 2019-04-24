@@ -19,12 +19,14 @@ h1 {
 
 #h11 {
   font-family: 'Signpainter', sans-serif;
-  font-size: 1.5em;
+  font-size: 2em;
+  text-transform: lowercase;
 }
 
 #h12 {
   font-family: 'montserrat', sans-serif;
   font-size: 1.5em;
+  text-transform: uppercase;
 }
 
 #btnOver21, #btnUnder21 {
