@@ -43,18 +43,20 @@ h1 {
     font-family: 'montserrat', sans-serif;
     font-size: 1.5em;
     text-transform: uppercase;
-}
+};
 
 #create {
     font-family: 'Signpainter', sans-serif;
-    font-size: 2em; 
+    font-size: 2.5em; 
     text-transform: lowercase; 
+    color: map-get($colors, primary);
 };
 
 #date {
-    font-family: 'Signpainter', sans-serif;
-    font-size: 2em; 
-    text-transform: lowercase; 
+    font-family: 'montserrat', sans-serif;
+    font-size: 1.5em; 
+    text-transform: uppercase; 
+    color: map-get($colors, primary);
 };
 
 #btnOver21, #btnUnder21 {
@@ -76,7 +78,7 @@ select {
 
 #submit {
     background-color: map-get($colors, primary);
-    color: gray;
+    color: black;
 }
 #agePopUp {
  border: solid;
@@ -100,14 +102,16 @@ select {
     padding: 50px;
     margin: 50px;
     float: left;
-    border: 2px solid map-get($colors, primary);
-}
+    border: #FD495C solid;
+    border-top: 0;
+    
+};
 
 .foodPictures {
-    max-width: 10em;
-    max-height: 10rem;
-}
+    max-width: 12rem;
+    max-height: 12rem;
+};
 // restaurant name 
 #restName {
     color: map-get($colors, accent);
-}
+};
