@@ -17,6 +17,32 @@ h1 {
   color: #FD495C;
 }
 
+#h11 {
+  font-family: 'Signpainter', sans-serif;
+  font-size: 2em;
+  text-transform: lowercase;
+}
+
+#h12 {
+  font-family: 'montserrat', sans-serif;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+#create {
+  font-family: 'Signpainter', sans-serif;
+  font-size: 2.5em;
+  text-transform: lowercase;
+  color: #FD495C;
+}
+
+#date {
+  font-family: 'montserrat', sans-serif;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: #FD495C;
+}
+
 #btnOver21, #btnUnder21 {
   font-size: 100%;
   border-color: #FD495C;
@@ -36,7 +62,7 @@ select {
 
 #submit {
   background-color: #FD495C;
-  color: gray;
+  color: black;
 }
 
 #agePopUp {
@@ -63,12 +89,13 @@ select {
   padding: 50px;
   margin: 50px;
   float: left;
-  border: 2px solid #FD495C;
+  border: #FD495C solid;
+  border-top: 0;
 }
 
 .foodPictures {
-  max-width: 10em;
-  max-height: 10rem;
+  max-width: 12rem;
+  max-height: 12rem;
 }
 
 #restName {

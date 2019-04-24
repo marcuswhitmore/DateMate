@@ -7,7 +7,7 @@
     <title>Date Mate</title>
     <link href="https://fonts.googleapis.com/css?family=Asap:400,500,700" rel="stylesheet">
     <!-- Sass & Style -->
-    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">    <link rel="stylesheet" href="https://use.typekit.net/zgv8hjn.css">
     <link rel="stylesheet" href="assets/main.css">
     <!-- FireBase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -18,17 +18,21 @@
 <body>
     <!-- This Div Will Pop up first and show a button, user choose either 21 and up or Not-->
     <div id="agePopUp">
-        <h1>Date Mate</h1>
+        <h1><span id="h11">Date</span><span id="h12">Mate</span></h1>
         <p>You must Be 21 to Drink/Date</p>
         <p id="age-Buttons">
         <input id="btnOver21" type="button" value="Over 21">
         <br>
         <input id="btnUnder21" type="button" value="Under 21">
         </p>
+        <p>google sign in</p>
+        <input id="btn_sign_in" type="button" name="googleSignIn" value="Sign In">
+        <input id="btn_sign_out" type="button" name="googleSignOut" value="Sign Out">
+
     </div>
     <div id="testHide">
     <div>
-        Create <a href=""></a> Date
+        <span id="create">create</span> <span id="date">a date</span>
         <p>
         <input id="theCity" type="text" placeholder="ENTER CITY">
         <input id="theState" type="text" placeholder="ENTER STATE">
