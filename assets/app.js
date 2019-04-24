@@ -24,24 +24,16 @@ var database = firebase.database();
 function foodResults(response) {
   return `
     <div class=theFood> 
-
-
     <img  class="foodPictures img-fluid"src="${
       response.restaurant.featured_image
     }" alt="restaurantPicture" >
-    
     <h5 id="restName">${response.restaurant.name} </h5>
-
-    
-
-
-    <img  class="foodPictures img-fluid"src="${response.restaurant.featured_image}" alt="restaurantPicture" >
-
     <a href="${response.restaurant.menu_url}" target ="_blank">Menu Link  </a>
     <p>Rating &nbsp ${response.restaurant.user_rating.aggregate_rating} </p>
     </div>
     `;
 }
+
 var zomatoCityId;
 $(document).on("click", "#submit", function() {
   // INPUT VALUES - CITY - STATE
@@ -145,10 +137,6 @@ map2 = new google.maps.Map(document.getElementById('map'), options);
 infowindow = new google.maps.InfoWindow
 }
 
-
-
-
-
 // DOCUMENT READY // TWO OPTIONS 21+ HIDES BUTTONS // 21- REDIRECTS USERS TO CHUCK E' CHEESES' WEBSITE
 $(document).ready(function(){
   $("#testLoad").hide();
@@ -163,6 +151,7 @@ $("#btnOver21").click(function(){
  $("#agePopUp").hide();
  $("#testLoad").show();
  $("#testHide").show();
+ ("body").addClass("bg2");
 });
 
 $("#btnUnder21").click(function(){
