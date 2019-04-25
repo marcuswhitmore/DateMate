@@ -1,3 +1,11 @@
+*:focus {
+  outline: none;
+}
+
+#theCategory {
+  background-color: yellow;
+}
+
 body {
   background-image: url("images/background1.png");
   background-size: cover;
@@ -43,17 +51,24 @@ h1 {
   color: #FD495C;
 }
 
-#btnOver21, #btnUnder21 {
+#btnOver21, #btnUnder21, #btn_sign_in, #btn_sign_out {
   font-size: 100%;
   border-color: #FD495C;
   background: transparent;
-  margin: 10px;
+  margin: 5px;
+  padding: 5px;
 }
 
 input {
   background: transparent;
   border-color: #FD495C;
   text-align: center;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  border: 1px solid #FD495C;
+  height: 30px;
+  width: 260px;
 }
 
 select {
@@ -67,7 +82,8 @@ select {
 
 #agePopUp {
   border: solid;
-  margin-top: 10em;
+  margin: 1em;
+  padding: 1em;
 }
 
 #testHide {
