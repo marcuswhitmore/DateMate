@@ -1,3 +1,4 @@
+/*
 var config = {
   apiKey: "AIzaSyCVGbHah9ZOba-AuUk1KZxnlLmvjBjJtgk",
   authDomain: "forclass-4f95c.firebaseapp.com",
@@ -5,6 +6,16 @@ var config = {
   projectId: "forclass-4f95c",
   storageBucket: "forclass-4f95c.appspot.com",
   messagingSenderId: "895419474223"
+};
+*/
+
+var config = {
+    apiKey: "AIzaSyBQyQxpSw0Kc3hNB59rH1p2Dcdj2xh52vY",
+    authDomain: "liveserver-e898b.firebaseapp.com",
+    databaseURL: "https://liveserver-e898b.firebaseio.com",
+    projectId: "liveserver-e898b",
+    storageBucket: "liveserver-e898b.appspot.com",
+    messagingSenderId: "976229361960"
 };
 
 firebase.initializeApp(config);
