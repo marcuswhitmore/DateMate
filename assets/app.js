@@ -79,7 +79,7 @@ $(document).on("click", "#submit", function() {
     // JQUERY DISPLAYING FOOD RESULTS TO THE DOM
     setTimeout(() => {
       $("#foodCards").html(response.restaurants.map(foodResults));
-    }, 2300); 
+    }, 2700); 
       
     // ZOMATO RESPONSE STORED AS ZOMATO DATA ================================== zomatoData = response;
       zomatoData = response;
@@ -101,7 +101,7 @@ $(document).on("click", "#submit", function() {
             // John and Thomas are working on this function and call
             setTimeout(() => {
               initMap2(lat, lng, location); 
-            }, 2300); 
+            }, 2700); 
           });
 
     
@@ -113,7 +113,7 @@ var map, infowindow;
 function initMap() {
   var options =  {
     center: { lat: 30.2672, lng: 97.7431},
-    zoom: 8,
+    zoom: 18,
     mapTypeId: 'hybrid'
   };
 map = new google.maps.Map(document.getElementById('map'), options);
@@ -151,6 +151,10 @@ function initMap2(lat, lng) {
   };
 map2 = new google.maps.Map(document.getElementById('map'), options);
 infowindow = new google.maps.InfoWindow
+var marker = new google.maps.Marker({
+  position: {lat: lat, lng: lng},
+  map: map2,
+});
 }
 
 // DOCUMENT READY // TWO OPTIONS 21+ HIDES BUTTONS // 21- REDIRECTS USERS TO CHUCK E' CHEESES' WEBSITE
