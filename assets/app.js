@@ -77,7 +77,10 @@ $(document).on("click", "#submit", function() {
     }).then(function(response){
     // RESTAURANT RESULTS ZOMATO ============================================== 2ND &THEN FUNCTION - ZOMATO
     // JQUERY DISPLAYING FOOD RESULTS TO THE DOM
+    setTimeout(() => {
       $("#foodCards").html(response.restaurants.map(foodResults));
+    }, 2300); 
+      
     // ZOMATO RESPONSE STORED AS ZOMATO DATA ================================== zomatoData = response;
       zomatoData = response;
       var location = response.restaurants[0].restaurant.location.address; // Zomato Address Data
@@ -96,7 +99,9 @@ $(document).on("click", "#submit", function() {
             // Address - Longitude stored in a variable
             var lng = response.data.results[0].geometry.location.lng;   
             // John and Thomas are working on this function and call
-            initMap2(lat, lng, location); 
+            setTimeout(() => {
+              initMap2(lat, lng, location); 
+            }, 2300); 
           });
 
     
