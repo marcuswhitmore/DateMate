@@ -77,7 +77,10 @@ $(document).on("click", "#submit", function() {
     }).then(function(response){
     // RESTAURANT RESULTS ZOMATO ============================================== 2ND &THEN FUNCTION - ZOMATO
     // JQUERY DISPLAYING FOOD RESULTS TO THE DOM
+    setTimeout(() => {
       $("#foodCards").html(response.restaurants.map(foodResults));
+    }, 2700); 
+      
     // ZOMATO RESPONSE STORED AS ZOMATO DATA ================================== zomatoData = response;
       zomatoData = response;
       var location = response.restaurants[0].restaurant.location.address; // Zomato Address Data
@@ -96,7 +99,9 @@ $(document).on("click", "#submit", function() {
             // Address - Longitude stored in a variable
             var lng = response.data.results[0].geometry.location.lng;   
             // John and Thomas are working on this function and call
-            initMap2(lat, lng, location); 
+            setTimeout(() => {
+              initMap2(lat, lng, location); 
+            }, 2700); 
           });
 
     
@@ -108,7 +113,7 @@ var map, infowindow;
 function initMap() {
   var options =  {
     center: { lat: 30.2672, lng: 97.7431},
-    zoom: 8,
+    zoom: 18,
     mapTypeId: 'hybrid'
   };
 map = new google.maps.Map(document.getElementById('map'), options);
@@ -146,6 +151,10 @@ function initMap2(lat, lng) {
   };
 map2 = new google.maps.Map(document.getElementById('map'), options);
 infowindow = new google.maps.InfoWindow
+var marker = new google.maps.Marker({
+  position: {lat: lat, lng: lng},
+  map: map2,
+});
 }
 
 // DOCUMENT READY // TWO OPTIONS 21+ HIDES BUTTONS // 21- REDIRECTS USERS TO CHUCK E' CHEESES' WEBSITE
