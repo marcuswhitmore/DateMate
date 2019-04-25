@@ -22,10 +22,11 @@ function writeUserData(newUser) {
 //make branch, add pics, push to origin
 
 $("#btn_sign_in").on("click", function () {
-    console.log("sign-in clicked");
+    //console.log("sign-in clicked");
     //Provide sign-in via Pop-up
     firebase.auth().signInWithPopup(provider).then(function (result) {
         //This provides a Google API token
+        console.log("test");
         var token = stringifyJSON(result.credential.accessToken);
 
         //This stores the signed-in user's info
