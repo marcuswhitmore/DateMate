@@ -10,13 +10,20 @@ $colors: (
 *:focus {
     outline: none;
 };
+// @media only screen and (max-width: 600px) {
+//     body {
+//       background-color: lightblue;
 
+//     }
+
+
+//   }
 #theCategory {
     background-color: yellow;
 };
 
 // map-get calls property of color
-body {
+html {
     background-image: url("images/background1.png");
 
    // this code makes the image responsive
@@ -25,8 +32,9 @@ body {
     -o-background-size: cover;
     background-size: cover;
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0;
+    padding: 0;
     text-align: center;
     font-family: 'Anton', sans-serif;   
     background-repeat: no-repeat;

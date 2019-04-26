@@ -171,7 +171,7 @@ $("#btnOver21").click(function(){
  $("#agePopUp").hide();
  $("#testLoad").show();
  $("#testHide").show();
- $("body").addClass("bg2");
+ $("html").addClass("bg2");
 });
 
 $("#btnUnder21").click(function(){
