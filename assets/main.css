@@ -118,4 +118,13 @@ select {
 #restName {
   color: #4a5461;
 }
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  #h11 {
+    text-transform: uppercase;
+  }
+}
 /*# sourceMappingURL=main.css.map */

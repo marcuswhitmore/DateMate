@@ -10,14 +10,7 @@ $colors: (
 *:focus {
     outline: none;
 };
-// @media only screen and (max-width: 600px) {
-//     body {
-//       background-color: lightblue;
 
-//     }
-
-
-//   }
 #theCategory {
     background-color: yellow;
 };
@@ -138,3 +131,24 @@ select {
 #restName {
     color: map-get($colors, accent);
 };
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+
+    };
+
+    #h11 {
+        text-transform: uppercase;
+    };
+
+    // #btnOver21, #btnUnder21, #btn_sign_in, #btn_sign_out {
+    //     font-size: 100%;
+    //     border-color: orange;
+    //     background: orange;
+    //     margin: 5px;
+    //     padding: 5px;
+    // }
+
+
+  }
