@@ -26,6 +26,7 @@ firebase.initializeApp(config);
 var lat;
 var lng;
 var location;
+var position;
 
 var database = firebase.database();
 
@@ -139,13 +140,14 @@ $(document).on("click", "#submit", function() {
         .then(function(response) {
           // ================================================================ 3RD &THEN FUNCTION - GOOGLE MAPS
           // Address - Latitude stored in a variable
-          var lat = response.data.results[0].geometry.location.lat;
+          lat = response.data.results[0].geometry.location.lat;
           // Address - Longitude stored in a variable
-          var lng = response.data.results[0].geometry.location.lng;
+          lng = response.data.results[0].geometry.location.lng;
           // John and Thomas are working on this function and call
           setTimeout(() => {
-            initMap2(lat, lng, location);
+            initMap2(lat, lng, position);
           }, 2700);
+
         });
     });
   });
@@ -164,7 +166,7 @@ function initMap() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       function(p) {
-        var position = {
+        position = {
           lat: p.coords.latitude,
           lng: p.coords.longitude
         };
@@ -191,16 +193,22 @@ var map2, infowindow2;
 function initMap2(lat, lng) {
   var options = {
     center: { lat: lat, lng: lng },
-    zoom: 16,
-    mapTypeId: "hybrid"
+    zoom: 12,
+    mapTypeId: "roadmap"
   };
   map2 = new google.maps.Map(document.getElementById("map"), options);
   infowindow = new google.maps.InfoWindow();
-  var marker = new google.maps.Marker({
+  var marker1 = new google.maps.Marker({
     position: { lat: lat, lng: lng },
     map: map2
   });
+  var marker2 = new google.maps.Marker({
+    position: { lat: position.lat, lng: position.lng },
+    map: map2
+});
 }
+
+
 
 // DOCUMENT READY // TWO OPTIONS 21+ HIDES BUTTONS // 21- REDIRECTS USERS TO CHUCK E' CHEESES' WEBSITE
 $(document).ready(function() {
