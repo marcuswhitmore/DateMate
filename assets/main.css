@@ -119,6 +119,10 @@ select {
   margin: top=10 px;
 }
 
+.timeInput {
+  width: 7rem;
+}
+
 .foodButton {
   width: 5rem;
   font-size: 100%;
