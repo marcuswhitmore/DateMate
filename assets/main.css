@@ -57,6 +57,7 @@ h1 {
   background: transparent;
   margin: 5px;
   padding: 5px;
+  border-width: 2.5px;
 }
 
 input {
