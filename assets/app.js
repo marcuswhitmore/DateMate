@@ -43,7 +43,7 @@ function foodResults(response) {
     <p>Average cost for two &nbsp $${
       response.restaurant.average_cost_for_two
     } </p>
-
+    <input class ="timeInput" type="text"  value="" placeholder="00/00 00:00">
     <button class="foodButton" val="${
       response.restaurant.name
     }" >Submit </button>
@@ -64,6 +64,7 @@ function foodResults(response) {
     <p>Average cost for two &nbsp $${
       response.restaurant.average_cost_for_two
     } </p>
+    <input class ="timeInput" type="text"  value="" placeholder="00/00 00:00">
 
     <button class="foodButton" val="${
       response.restaurant.name
@@ -107,7 +108,7 @@ $(document).on("click", "#submit", function() {
     // initMap(lat, lng, location);
     $.ajax({
       url:
-        "https://developers.zomato.com/api/v2.1/search?count=6&entity_id=" +
+        "https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" +
         zomatoCityId +
         "&entity_type=city&sort=rating&category=" +
         category,
@@ -116,6 +117,7 @@ $(document).on("click", "#submit", function() {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
       }
     }).then(function(response) {
+      console.log(response)
       // RESTAURANT RESULTS ZOMATO ============================================== 2ND &THEN FUNCTION - ZOMATO
       // JQUERY DISPLAYING FOOD RESULTS TO THE DOM
       setTimeout(() => {
