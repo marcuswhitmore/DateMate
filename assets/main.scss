@@ -112,20 +112,37 @@ select {
 };
 
 .theFood {
-    width: 10rem;
-    height: 10rem;
-    padding: 50px;
-    margin: 50px;
+    width: 12rem;
+    
+    padding: 10px;
+    margin: 20px;
     float: left;
     border: #FD495C solid;
     border-top: 0;
+    overflow: auto;
     
 };
 
 .foodPictures {
-    max-width: 12rem;
-    max-height: 12rem;
+    width:100%;
+    height: 8rem;
 };
+.foodInfo {
+    position:relative;
+margin:top=10px;
+
+}
+.foodButton
+{
+    width:5rem;
+    
+    font-size: 100%;
+    border-color: map-get($colors, primary);
+    background: transparent;
+    margin: 5px;
+    padding: 5px;
+    color:#FD495C;
+}
 // restaurant name 
 #restName {
     color: map-get($colors, accent);
