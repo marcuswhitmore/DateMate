@@ -1,4 +1,4 @@
-Name To Be Decided.
+DateMate
 An application that will plan your evening for you.
 ☆ Bars or Restaurants.
 ☆ See the menu ahead of time or read the reviews.
