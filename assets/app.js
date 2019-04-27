@@ -45,7 +45,7 @@ function foodResults(response) {
     } </p>
 
     <button class="foodButton" val="${
-      response.restaurant.location.address
+      response.restaurant.name
     }" >Submit </button>
 
     <div>
@@ -66,7 +66,7 @@ function foodResults(response) {
     } </p>
 
     <button class="foodButton" val="${
-      response.restaurant.location.address
+      response.restaurant.name
     }" >Submit </button>
 
     <div>
