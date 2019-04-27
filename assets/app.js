@@ -38,18 +38,26 @@ function foodResults(response) {
     <img  class="foodPictures img-fluid"src="${
       response.restaurant.featured_image
     }" alt="restaurantPicture" >
+    <div class=foodInfo>
     <h5 id="restName">${response.restaurant.name} </h5>
     <a href="${response.restaurant.menu_url}" target ="_blank">Menu Link  </a>
     <p>Rating &nbsp ${response.restaurant.user_rating.aggregate_rating} </p>
+    <p>Average cost for two &nbsp $${response.restaurant.average_cost_for_two} </p>
+
+    <button class="foodButton" val="${response.restaurant.location.address}" >Submit </button>
+
+    <div>
     </div>
     `;
 }
-
+var category
 var zomatoCityId;
 $(document).on("click", "#submit", function() {
   // INPUT VALUES - CITY - STATE
   var city = $("#theCity").val().trim();
   var state = $("#theState").val().trim();
+  category= $('#theCategory').val();
+  console.log(category);
   // CLEARS INPUT - CITY - STATE
   $("#theCity").val("");
   $("#theState").val("");
@@ -66,15 +74,17 @@ $(document).on("click", "#submit", function() {
     // CITY ID FROM RESPONSE ============================== 1ST &THEN FUNCTION - ZOMATO - CITY - STATE 
     // CITY ID TURNED INTO STRING
     zomatoCityId = response.location_suggestions[0].id.toString();
+    
     // SEARCH CALL ZOMATO ===================================================== 2ND CALL - ZOMATO
     // initMap(lat, lng, location);
     $.ajax({
-      url:"https://developers.zomato.com/api/v2.1/search?count=5&entity_id=" + zomatoCityId + "&entity_type=city&sort=rating",
+      url:"https://developers.zomato.com/api/v2.1/search?count=6&entity_id=" + zomatoCityId + "&entity_type=city&sort=rating&category=" + category,
       method: "GET",
       headers: {
         "user-key": "3373e99a07815c6329a67cf51dc7e958"
       }
     }).then(function(response){
+     
     // RESTAURANT RESULTS ZOMATO ============================================== 2ND &THEN FUNCTION - ZOMATO
     // JQUERY DISPLAYING FOOD RESULTS TO THE DOM
     setTimeout(() => {
